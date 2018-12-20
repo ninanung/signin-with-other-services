@@ -1,16 +1,23 @@
 <template>
-    <button class='button'>
+    <button class='button' v-on:click='buttonClick' >
         <img class='image' :src='require("../assets/" + service + ".png")' />
         {{'Login with ' + service }}
     </button>
 </template>
 
 <script>
+/* eslint-disable no-console */
 export default {
     props: [ 'service' ],
     methods: {
-        buttonClick: () => {
-            
+        buttonClick: function() {
+            fetch('http://localhost:3000/' + this.service, {
+                method: 'GET',
+            }).then(function(res) {
+                console.log(res)
+            }).catch(function(err) {
+                console.log(err);
+            }) 
         }
     },
 }

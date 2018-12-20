@@ -1,14 +1,12 @@
 <template>
   <div id="app">
-    <Buttons/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Buttons from './components/Buttons.vue';
-
 export default {
-  components: { Buttons },
+
 }
 </script>
 
