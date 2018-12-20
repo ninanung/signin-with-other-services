@@ -9,7 +9,7 @@ const client = Client()
 
 router.get('/', function (req, res, next) {
   console.log('test')
-  res.sendFile(path.join(__dirname + '/dist/index.html'))
+  res.sendFile(path.join('../dist/index.html'))
 });
 
 router.get('/github', function(req, res, next) {
@@ -22,7 +22,6 @@ router.get('/github', function(req, res, next) {
       state: req.session.csrf_string,
       scope: 'user:email'
     });
-  res.send(githubAuthUrl)
 })
 
 module.exports = router;

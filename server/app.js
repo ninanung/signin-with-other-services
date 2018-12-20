@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var connectHistoryApiFallbsck = require('connect-history-api-fallback');
 const session = require('express-session');
 var qs = require('querystring');
 var rs = require('randomstring');
@@ -13,8 +14,7 @@ var app = express();
 
 // view engine setup
 app.set('view engine', 'html');
-
-app.use(require('connect-history-api-fallback')())
+app.use(connectHistoryApiFallbsck())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

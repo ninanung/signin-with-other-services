@@ -7,17 +7,19 @@
 
 <script>
 /* eslint-disable no-console */
+import axios from 'axios'
+
 export default {
     props: [ 'service' ],
     methods: {
         buttonClick: function() {
-            fetch('http://localhost:3000/' + this.service, {
-                method: 'GET',
-            }).then(function(res) {
+            axios.get('http://localhost:3000/github')
+            .then(function(res) {
                 console.log(res)
-            }).catch(function(err) {
-                console.log(err);
-            }) 
+            })
+            .catch(function(err) {
+                console.log(err)
+            })
         }
     },
 }
