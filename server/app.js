@@ -4,9 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var connectHistoryApiFallbsck = require('connect-history-api-fallback');
-const session = require('express-session');
+var session = require('express-session');
 var qs = require('querystring');
 var rs = require('randomstring');
+var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use(cors())
 
 app.use('/', indexRouter);
 
@@ -47,6 +49,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+  console.log(req.session)
 });
 
 module.exports = app;

@@ -15,7 +15,7 @@ export default {
         buttonClick: function() {
             axios.get('http://localhost:3000/github')
             .then(function(res) {
-                console.log(res)
+                window.location.href = res.data;
             })
             .catch(function(err) {
                 console.log(err)
