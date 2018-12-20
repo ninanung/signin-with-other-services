@@ -8,7 +8,7 @@ var Client = require('../client').client;
 const client = Client()
 
 router.get('/', function (req, res, next) {
-  res.sendFile(path.join('../dist/index.html'))
+  res.sendFile(path.join('../dist/test.html'))
 });
 
 router.get('/github', function(req, res, next) {
