@@ -20,7 +20,7 @@ router.get('/github', function(req, res, next) {
     client_id: client.CLIENT_ID,
     redirect_uri: client.HOST + 'githublogin',
     state: state,
-    scope: 'user:email'
+    scope: 'user:email',
   });
 
   const githubAuthUrl = url + query;
@@ -30,11 +30,22 @@ router.get('/github', function(req, res, next) {
 router.get('/githublogin', function(req, res, next) {
   const returncode = req.query.code;
   const returnstate = req.query.state;
-  console.log(returncode)
-  console.log(returnstate)
-  if(state === returnstate) {
-    console.log('yes');
+
+  if(state !== returnstate) {
+    res.send(false);
   }
+
+  const host = 'https://github.com/login/oauth/access_token?'
+  const queryString = qs.stringify({
+    client_id: client.CLIENT_ID,
+    client_secret: client.CLIENT_SECRET,
+    code: returncode,
+    redirect_uri: client.HOST + 'githublogin',
+    state: state,
+  })
+
+  const authurl = host + queryString;
+  res.send(authurl)
 });
 
 module.exports = router;
