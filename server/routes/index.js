@@ -25,6 +25,16 @@ router.get('/github', function(req, res, next) {
 
   const githubAuthUrl = url + query;
   res.send(githubAuthUrl)
-})
+});
+
+router.get('/githublogin', function(req, res, next) {
+  const returncode = req.query.code;
+  const returnstate = req.query.state;
+  console.log(returncode)
+  console.log(returnstate)
+  if(state === returnstate) {
+    console.log('yes');
+  }
+});
 
 module.exports = router;
