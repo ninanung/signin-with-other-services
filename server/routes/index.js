@@ -3,6 +3,7 @@ var path = require('path');
 var router = express.Router();
 var qs = require('querystring');
 var rs = require('randomstring');
+const axios = require('axios');
 var Client = require('../client').client;
 
 const client = Client()
@@ -43,9 +44,33 @@ router.get('/githublogin', function(req, res, next) {
     redirect_uri: client.HOST + 'githublogin',
     state: state,
   })
-
   const authurl = host + queryString;
-  res.send(authurl)
+
+  let access_token = '';
+
+  axios.post(authurl)
+  .then(function(res) {
+    access_token = qs.parse(res.data);
+  })
+  .catch(function(err) {
+    console.log(err)
+  })
+
+  const config = {
+    headers: {
+      Authorization: 'token ' + access_token,
+      'User-Agent': 'Login-App'
+    }
+  }
+  axios.get('https://api.github.com/user/public_emails', config)
+  .then(function(res) {
+    res.send(res.data)
+  })
+  .catch(function(err) {
+    console.log(err)
+  })
+
+  res.send(false)
 });
 
 module.exports = router;

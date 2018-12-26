@@ -3,7 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import NotFound from './components/NotFound.vue'
 import Main from './components/Main.vue'
-import GithubLogin from './components/logins/GithubLogin.vue';
+import GithubLogin from './components/logins/github/GithubLogin.vue';
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)

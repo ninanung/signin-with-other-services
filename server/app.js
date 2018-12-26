@@ -7,11 +7,13 @@ var connectHistoryApiFallbsck = require('connect-history-api-fallback');
 var session = require('express-session');
 var qs = require('querystring');
 var rs = require('randomstring');
-var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 
 var app = express();
+
+const cors = require('cors');
+app.use(cors({origin:"http://localhost:3000"}));
 
 // view engine setup
 app.set('view engine', 'html');
@@ -21,7 +23,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use(cors())
 
 app.use('/', indexRouter);
 

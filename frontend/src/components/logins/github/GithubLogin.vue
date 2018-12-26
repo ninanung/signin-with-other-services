@@ -1,5 +1,8 @@
 <template>
-    <h1>GITHUBLOGIN</h1>
+    <div>
+        <h1>GITHUBLOGIN</h1>
+        <h3>{{this.isLogin}}</h3>
+    </div>
 </template>
 
 <script>
@@ -8,32 +11,33 @@ import axios from 'axios'
 import qs from 'querystring';
 
 export default {
+    data() {
+        return {
+            isLogin: '',
+        }
+    },
     methods: {
-        passToUser: function(url) {
-            axios.post(url)
-            .then(function(res) {
-                console.log(qs.parse(res.data))
-            })
-            .catch(function(err) {
-                console.log(err)
-            })
+        insertData: function(data) {
+            this.isLogin = data;
         }
     },
     created() {
-        const passUser = this.passToUser;
+        const insertData = this.insertData;
         axios.get('http://localhost:3000/githublogin?code=' + this.$route.query.code + '&state=' + this.$route.query.state)
         .then(function(res) {
             if(!res.data) {
-                alert('something goes wrong.');
+                alert('something went wrong. plz try again');
                 this.$route.push('/')
             }
             return res.data;
         })
-        .then(function(url) {
-            passUser(url);
+        .then(function(data) {
+            insertData(data)
         })
         .catch(function(err) {
+            alert('something went wrong. plz try again');
             console.log(err)
+            this.$route.push('/');
         })
     },
     beforeRouteEnter(to, from, next) {
