@@ -19,7 +19,7 @@ export default {
         if(this.$route.query.service === 'github') {
             axios.get('http://localhost:3000/github/user?token=' + this.$route.query.token)
             .then(function(resp) {
-                console.log(resp.data)
+                alert(resp.data + '! login success!');
             })
             .catch(function(err) {
                 console.log(err)

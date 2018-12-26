@@ -62,8 +62,8 @@ router.get('/user', function(req, res, next) {
     }
     axios.get('https://api.github.com/user/public_emails', config)
     .then(function(resp) {
-        console.log(resp.data)
-        res.send(res.data);
+        console.log(resp.data[0])
+        res.send(resp.data[0].email);
     })
     .catch(function(err) {
         console.log(err)
