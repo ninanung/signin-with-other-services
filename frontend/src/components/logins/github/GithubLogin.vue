@@ -1,43 +1,33 @@
 <template>
     <div>
         <h1>GITHUBLOGIN</h1>
-        <h3>{{this.isLogin}}</h3>
     </div>
 </template>
 
 <script>
 /* eslint-disable no-console */
 import axios from 'axios'
-import qs from 'querystring';
 
 export default {
-    data() {
-        return {
-            isLogin: '',
-        }
-    },
     methods: {
-        insertData: function(data) {
-            this.isLogin = data;
+        redirect: function(url) {
+            window.location.href = url;
         }
     },
     created() {
-        const insertData = this.insertData;
-        axios.get('http://localhost:3000/githublogin?code=' + this.$route.query.code + '&state=' + this.$route.query.state)
+        const redirect = this.redirect;
+        axios.get('http://localhost:3000/github/login?code=' + this.$route.query.code + '&state=' + this.$route.query.state)
         .then(function(res) {
             if(!res.data) {
-                alert('something went wrong. plz try again');
-                this.$route.push('/')
+                alert('something went wrong. can\'t get access token.');
+                redirect('/')
             }
-            return res.data;
-        })
-        .then(function(data) {
-            insertData(data)
+            redirect('/user?token=' + res.data + '&service=github')
         })
         .catch(function(err) {
-            alert('something went wrong. plz try again');
+            alert('something went wrong. request failed.');
             console.log(err)
-            this.$route.push('/');
+            redirect('/')
         })
     },
     beforeRouteEnter(to, from, next) {
@@ -55,7 +45,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

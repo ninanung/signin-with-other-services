@@ -13,7 +13,7 @@ export default {
     props: [ 'service' ],
     methods: {
         buttonClick: function() {
-            axios.get('http://localhost:3000/github')
+            axios.get('http://localhost:3000/' + this.service)
             .then(function(res) {
                 window.location.href = res.data;
             })

@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import NotFound from './components/NotFound.vue'
 import Main from './components/Main.vue'
 import GithubLogin from './components/logins/github/GithubLogin.vue';
+import User from './components/logins/User.vue';
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -13,6 +14,7 @@ const router = new VueRouter({
     routes: [
         { path: '/', name: 'main', component: Main },
         { path: '/githublogin', name: 'githublogin', component: GithubLogin },
+        { path: '/user', name: 'user', component: User},
         { path: '*', component: NotFound },
     ]
 })

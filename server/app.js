@@ -9,6 +9,7 @@ var qs = require('querystring');
 var rs = require('randomstring');
 
 var indexRouter = require('./routes/index');
+const github = require('./routes/github');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/', indexRouter);
+app.use('/github', github);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
