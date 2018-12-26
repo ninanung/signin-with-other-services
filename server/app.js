@@ -4,9 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var connectHistoryApiFallbsck = require('connect-history-api-fallback');
-var session = require('express-session');
-var qs = require('querystring');
-var rs = require('randomstring');
 
 var indexRouter = require('./routes/index');
 const github = require('./routes/github');
@@ -32,16 +29,6 @@ app.use('/github', github);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
-// session
-app.use(
-  session({
-    secret: rs.generate(),
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 60000 },
-  })
-)
 
 // error handler
 app.use(function(err, req, res, next) {
