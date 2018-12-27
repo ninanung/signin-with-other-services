@@ -45,7 +45,6 @@ router.get('/login', function(req, res, next) {
     axios.post(authurl)
     .then(function(resp) {
         const token = qs.parse(resp.data).access_token;
-        console.log(token);
         res.send(token)
     })
     .catch(function(err) {
@@ -62,7 +61,6 @@ router.get('/user', function(req, res, next) {
     }
     axios.get('https://api.github.com/user/public_emails', config)
     .then(function(resp) {
-        console.log(resp.data[0])
         res.send(resp.data[0].email);
     })
     .catch(function(err) {

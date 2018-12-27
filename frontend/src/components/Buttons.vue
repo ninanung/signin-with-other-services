@@ -1,16 +1,16 @@
 <template>
     <div class='body'>
         <li class='li' v-for='(service, index) in services' :key=index>
-            <login :index=index :service=service />
+            <login-button :index=index :service=service />
         </li>
     </div>
 </template>
 
 <script>
-import Login from './Login.vue';
+import LoginButton from './LoginButton.vue';
 
 export default {
-    components: { Login },
+    components: { LoginButton },
     data() {
         return {
             services: ['github', 'facebook', 'google']

@@ -10,7 +10,7 @@
 import axios from 'axios'
 
 export default {
-    props: [ 'service' ],
+    props: [ 'service', 'index' ],
     methods: {
         buttonClick: function() {
             axios.get('http://localhost:3000/' + this.service)

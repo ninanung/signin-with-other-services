@@ -9,7 +9,3 @@ export default {
     components: { Buttons }
 }
 </script>
-
-<style>
-
-</style>
