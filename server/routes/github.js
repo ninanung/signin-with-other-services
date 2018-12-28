@@ -1,5 +1,4 @@
 var express = require('express');
-var path = require('path');
 var router = express.Router();
 var qs = require('querystring');
 var rs = require('randomstring');
@@ -55,8 +54,8 @@ router.get('/login', function(req, res, next) {
 router.get('/user', function(req, res, next) {
     const config = {
         headers: {
-        Authorization: 'token ' + req.query.token,
-        'User-Agent': 'Login-App'
+            Authorization: 'token ' + req.query.token,
+            'User-Agent': 'Login-App'
         }
     }
     axios.get('https://api.github.com/user/public_emails', config)
