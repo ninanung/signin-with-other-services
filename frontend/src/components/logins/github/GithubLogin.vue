@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>GITHUBLOGIN</h1>
+        <h1>GITHUB LOGIN</h1>
     </div>
 </template>
 
