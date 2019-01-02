@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
     const url = 'https://github.com/login/oauth/authorize?';
     const query = qs.stringify({
-        client_id: client.CLIENT_ID,
+        client_id: client.GITHUB_CLIENT_ID,
         redirect_uri: client.HOST + 'githublogin',
         state: state,
         scope: 'user:email',
@@ -33,8 +33,8 @@ router.get('/login', function(req, res, next) {
 
     const host = 'https://github.com/login/oauth/access_token?'
     const queryString = qs.stringify({
-        client_id: client.CLIENT_ID,
-        client_secret: client.CLIENT_SECRET,
+        client_id: client.GITHUB_CLIENT_ID,
+        client_secret: client.GITHUB_CLIENT_SECRET,
         code: returncode,
         redirect_uri: client.HOST + 'githublogin',
         state: state,

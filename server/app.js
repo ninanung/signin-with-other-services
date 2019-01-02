@@ -4,8 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var connectHistoryApiFallbsck = require('connect-history-api-fallback');
+
 var indexRouter = require('./routes/index');
 const github = require('./routes/github');
+const google = require('./routes/google.js');
 
 var app = express();
 
@@ -23,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/', indexRouter);
 app.use('/github', github);
+app.use('/google', google);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
