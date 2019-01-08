@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "firebase": "^5.7.2",
+    "react-scripts": "^2.1.3",
     "vue": "^2.5.17",
     "vue-router": "^3.0.2",
     "vuex": "^3.0.1"
