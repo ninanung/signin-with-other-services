@@ -16,4 +16,7 @@ If you want to know how to login with Github, i'm sorry, i did write how but it 
 ## Google
 
 Using Firebase to signin with Google account. Please, check this [Google Document](https://firebase.google.com/docs/auth/web/google-signin?hl=en) first.  
-이 저장소에 들어오신분들 중 Google로그인에 대한 정보를 확인하고 싶으신 분은 우선 [Google 문서](https://firebase.google.com/docs/auth/web/google-signin?hl=ko)를 먼저 확인해 주세요. gist글도 나중에 작성할 예정입니다.
+Google로 로그인하기를 사용해 보았다. 사실 설명하는 글을 쓰려고 했는데 [Google 문서](https://firebase.google.com/docs/auth/web/google-signin?hl=ko)가 너무 잘되어 있어서 내가 일부러 설명할 필요가 없었다. 문서를 보면 나와있지만, Firebase사용이 아예 처음이라면 [Webapp에 Firebase 추가하기](https://firebase.google.com/docs/web/setup?hl=ko)문서부터 확인해보자. 상당히 자세하게 셜명되어 있다.
+
+## Facebook
+
