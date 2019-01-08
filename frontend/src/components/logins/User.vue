@@ -26,9 +26,11 @@ export default {
         axios.get(url)
         .then(function(resp) {
             alert(resp.data + '! login success!');
+            redirect('/');
         })
         .catch(function(err) {
-            console.log(err)
+            console.log(err);
+            alert('something goes wrong');
             redirect('/')
         })
     },

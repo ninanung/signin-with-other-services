@@ -6,8 +6,6 @@
 
 <script>
 /* eslint-disable no-console */
-import axios from 'axios';
-
 export default {
     methods: {
         redirect: function(url) {
@@ -15,20 +13,13 @@ export default {
         }
     },
     created() {
-        const redirect = this.redirect;
-        axios.get() // insert url here
-        .then(function(res) {
-            // do something
-        })
-        .catch(function(err) {
-            alert('something went wrong. request failed.');
-            console.log(err)
-            redirect('/')
-        })
+        const queryData = this.$route.query;
+        alert('Hello! ' + queryData.username + '! your email is ' + queryData.email);
+        this.redirect('/');
     },
     beforeRouteEnter(to, from, next) {
         if(to.query) {
-            if(to.query.code && to.query.state) {
+            if(to.query.token && to.query.email && to.query.username) {
                 next()
             } else {
                 alert('there\'s no query data.')
