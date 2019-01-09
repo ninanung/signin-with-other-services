@@ -20,3 +20,4 @@ Google로 로그인하기를 사용해 보았다. 사실 설명하는 글을 쓰
 
 ## Facebook
 
+Ok, i didn't make Facebook login and i will not. I think these three auth service look pretty similar. I already practiced enough. But, if you want to know how to login with Facebook, see this [Facebook login document](https://developers.facebook.com/docs/facebook-login/web). It is quite detailed.
